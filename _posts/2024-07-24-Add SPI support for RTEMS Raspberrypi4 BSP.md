@@ -3,15 +3,14 @@ layout: post
 title:  "Add SPI support for RTEMS Raspberrypi4 BSP"
 ---
 
-# 为RTEMS Raspberrypi4 BSP添加SPI支持
+# Add SPI support for RTEMS Raspberrypi4 BSP
 
-主要参考了`dev/bsps/shared/dev/spi/cadence-spi.c`
+Mainly refer to `dev/bsps/shared/dev/spi/cadence-spi.c`
 
-RTEMS 使用了基于linux的SPI框架，SPI总线驱动已经在内核中实现。在这个项目中我需要实习的是 `RPI4的SPI主机控制器驱动`
-
-SPI在RTEMS中的实现如图：
+RTEMS uses a linux-based framework. The SPI Bus has been implemented in the RTEMS kernel. In this project, I need to implement the SPI master controller driver of RPi 4 and SSD1306 driver. The implementation of SPI in RTEMS as shown in the block diagram:
 ![SPI-RTEMS](https://github.com/yangn0/yangn0.github.io/blob/main/picture/SPI-RTEMS.png?raw=true)
-首先需要将SPI主机控制器设备在总线上注册，注册函数如下：
+
+First, register the SPI host controller device on the bus. The register function is as follows:
 ```c
 rtems_status_code raspberrypi_spi_init(raspberrypi_spi_device device)
 {
@@ -91,24 +90,24 @@ rtems_status_code raspberrypi_spi_init(raspberrypi_spi_device device)
   return RTEMS_SUCCESSFUL;
 }
 ```
-调用 `spi_bus_alloc_and_init` ,此为SPI总线驱动实现的函数，位于RTEMS内核 `dev/cpukit/dev/spi/spi-bus.c`。
+Call `spi_bus_alloc_and_init`, which is a function implemented by the SPI bus driver and is located in the RTEMS kernel `dev/cpukit/dev/spi/spi-bus.c`.
 ```
 Allocates a bus control from the heap and initializes it. After a sucessful allocation and initialization the bus control must be destroyed via spi_bus_destroy_and_free(). A registered bus control will be automatically destroyed in case the device file is unlinked. Make sure to call spi_bus_destroy_and_free() in a custom destruction handler.
 
-参数:
+parameter
 size – The size of the bus control. This enables the addition of bus controller specific data to the base bus control. The bus control is zero initialized.
 
-返回值:
+return
 non-NULL The new bus control.
 NULL An error occurred. The errno is set to indicate the error.
 ```
 
-在`switch`结构中根据枚举变量`raspberrypi_spi_device `的值分别选择 `SPI寄存器地址` 和 `dev目录下的路径名称`。寄存器地址定义在 `raspberrypi.h` 文件中。
+In the `switch` structure, select the `SPI register address` and the `path name` according to the value of the enum `raspberrypi_spi_device`. Register addresses are defined in the `raspberrypi.h` file.
 
-设置bus的各种参数和接口函数。
-使用宏定义`BSP_SPI_USE_INTERRUPTS`选择驱动使用中断模式或轮询模式。
+Set various parameters and interface functions of the bus.
+Use the macro definition `BSP_SPI_USE_INTERRUPTS` to select the driver to use interrupt mode or polling mode.
 
-中端句柄的安装，考虑到同时启用多个SPI的情况，使用`RTEMS_INTERRUPT_SHARED`。
+The installation of interrupt handlers, taking into account the situation of enabling multiple SPIs at the same time, use `RTEMS_INTERRUPT_SHARED`.
 ```c
   eno = rtems_interrupt_handler_install(
     bus->irq,
@@ -119,11 +118,11 @@ NULL An error occurred. The errno is set to indicate the error.
   );
 ```
 
-调用`spi_bus_register`，将设备注册进总线。此函数为SPI总线驱动中实现的函数。
+Call `spi_bus_register` to register the device into the bus. This function is implemented in the SPI bus driver.
 
-调用`raspberrypi_spi_init_gpio`，初始化gpio，将gpio设置为正确的功能。将此函数后置的原因：总线注册失败时，避免对gpio进行复原。
+Call `raspberrypi_spi_init_gpio` to initialize gpio and set gpio to the correct function. The reason for placing this function after `spi_bus_register`: to avoid restoring gpio when `spi_bus_register` fails.
 
-接下来介绍transfer函数，用于处理SPI读写。
+Next, I introduce the transfer function, which is used to handle SPI reading and writing.
 ```c
 static int raspberrypi_spi_transfer(
   spi_bus *base,
@@ -152,16 +151,16 @@ static int raspberrypi_spi_transfer(
   return rv;
 }
 ```
-调用`raspberrypi_spi_check_msg`函数，对msg进行检查，主要检查是否使用了驱动不支持的模式，cs是否超过cs的总数。
-这里需要传入msg_count，因为msgs是地址连续的一个队列，可能包含多个msg。
+Call the `raspberrypi_spi_check_msg` function to check msg. It mainly checks whether a mode not supported by the driver is used and whether cs exceeds the total number of cs.
+msg_count needs to be passed in here, because msgs is a queue with consecutive addresses and may contain multiple msg.
 
-检查通过则将数据的信息结构体的`部分变量`赋值给bus结构体中的相应变量。
+If the check passes, the `part variables` of the data information structure are assigned to the corresponding variables in the bus structure.
 
-如果使用中断模式则进入`raspberrypi_spi_start`，轮询模式则进入`raspberrypi_spi_transfer_msg`。
+If you use interrupt mode, enter `raspberrypi_spi_start`, and use polling mode, enter `raspberrypi_spi_transfer_msg`.
 
-本文主要介绍中断模式。
+This article mainly introduces the interrupt mode.
 
-`raspberrypi_spi_start`只需要将传输启动，对于RPI4的SPI控制器，将TA=1，就会立即触发第一个中断，我认为这是与其他BSP不同的点。
+`raspberrypi_spi_start` only needs to start the transmission. For the RPI4 SPI controller, setting TA=1 will trigger the first interrupt immediately. I think this is the biggest difference from other BSPs.
 ```c
 static void raspberrypi_spi_start(raspberrypi_spi_bus *bus)
 {
@@ -177,7 +176,7 @@ static void raspberrypi_spi_start(raspberrypi_spi_bus *bus)
 }
 ```
 
-中断处理函数如下：
+The interrupt handling function is as follows:
 ```c
 static void raspberrypi_spi_interrupt(void *arg)
 {
@@ -211,18 +210,19 @@ static void raspberrypi_spi_interrupt(void *arg)
   }
 }
 ```
-函数 `raspberrypi_spi_irq` 用于判断中断是否是由当前SPI设备产生。这使得多个SPI设备可以同时使用。
+The function `raspberrypi_spi_irq` is used to determine whether the interrupt is generated by the current SPI device. This allows multiple SPI devices to be used simultaneously.
 
-函数`raspberrypi_spi_next_msg`用于切换到下一个msg，并将msg结构体中的剩余变量赋值给bus结构体。
+The function `raspberrypi_spi_next_msg` is used to switch to the next msg and assign the remaining variables in the msg structure to the bus structure.
 
-rtems_event_transient_receive 和 rtems_event_transient_send 至关重要
-传输开始时调用`rtems_event_transient_receive`。
+`rtems_event_transient_receive` and `rtems_event_transient_send` are crucial
+
+`rtems_event_transient_receive` is called when the transfer starts.
 ```c
 	bus->task_id = rtems_task_self();
 	rtems_event_transient_receive(RTEMS_WAIT, RTEMS_NO_TIMEOUT);
 ```
-传输结束时调用`rtems_event_transient_send`。
+`rtems_event_transient_send` is called at the end of the transfer.
 ```c
 	rtems_event_transient_send(bus->task_id);
 ```
-保证一条传输命令在传输结束前阻塞。
+It guarantees that a transfer command blocks until the end of the transfer.
