@@ -7,7 +7,6 @@ Project Proposal: [https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I
 
 Project epic: [https://gitlab.rtems.org/groups/rtems/-/epics/6](https://gitlab.rtems.org/groups/rtems/-/epics/6)
 
-
 # Goal
 This project aims to improve the Raspberry Pi 4B BSP support on RTEMS. Project intends to add the following supports to the Raspberry Pi 4B BSP: SPI support, Watchdog support and SD card support.
 
@@ -21,7 +20,7 @@ Merge requests:
 - [aarch64/raspberrypi: Add gpio driver (merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/59)
 - [raspberrypi4.rst: Documation for the gpio driver(merged)](https://gitlab.rtems.org/rtems/docs/rtems-docs/-/merge_requests/18)
 
-issues: 
+issues:
 - [Add gpio driver for aarch64/raspberrypi BSP](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5029)
 
 Repository:
@@ -55,7 +54,7 @@ Merge requests:
 issues:
 - [Add SPI support to Raspberry Pi 4B BSP (Closed)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5056)
 
-SSD1306 Driver: 
+SSD1306 Driver:
 - [https://github.com/yangn0/RTEMS_app/blob/main/test/test_SSD1306.c](https://github.com/yangn0/RTEMS_app/blob/main/test/test_SSD1306.c)
 
 Blog Post:
@@ -76,7 +75,10 @@ WDT test:
 Blog Post:
 - [RTEMS RPi4B BSP add system timer driver support](https://yangn0.github.io/2024/05/22/RTEMS-RPi4B-BSP-add-system-timer-driver-support.html)
 
-## bug:
+## FDT support for sdhci
+[FDT support for sdhci (Unmerged)](https://gitlab.rtems.org/yangn0/rtems/-/commit/470d9cb763b4689b519ef069b61717d7a23c7780)
+
+## bug
 Some bugs I found and fixed.
 
 [termios: scanf() is not blocking in UART interrupt mode (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5012)
@@ -88,5 +90,22 @@ Some bugs I found and fixed.
 [dev/pl011: Fix incorrect macro definition (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/64)
 
 # Current State
+I completed most of the tasks in the proposal such as SPI support (polling mode and interrupt mode), watchdog support, and some unplanned tasks such as improving and merging gpio and pl011 driver.
 
 # Work Left
+## 1. sdhci driver
+The sdhci driver in freebsd requires BSP to support DMA, FDT, and mailbox. If I want to port it to libbsd, I need to implement DMA support, FDT support, and mailbox support first. There is a lot of work to support sd card. I only implemented [FDT support for sdhci (Unmerged)](https://gitlab.rtems.org/yangn0/rtems/-/commit/470d9cb763b4689b519ef069b61717d7a23c7780). So the left work is DMA support, mailbox support and SD card support.
+And the FDT support for sdhci may still need improvement.  
+
+## 2. GSOC2023 unmerged code
+There is still some unmerged code from Utkarsh Verma.
+
+I will focus on RTEMS in the next two years, continue to work and complete them.
+
+# Unmerged MR
+- [dev/serial: Refactor the pl011 driver to be extensible (Open)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/47)
+
+# Conclusion
+I was very lucky. RTEMS was migrated to gitlab in the early stage of GSOC2024. This greatly reduced the difficulty of code merging. All my questions were answered promptly. I learned more about RTEMS and embedded development. Contributed to a very worthy cause and worked with many RTEMS people and great mentors from various parts of the world. I really enjoy working with RTEMS.
+
+I would like to thank my mentors, and the whole RTEMS community for every suggestion, discussion, and comment which helps me to deal with all the difficulties and problems. I would also like to thank Google for providing this opportunity.
