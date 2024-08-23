@@ -114,4 +114,4 @@ I will focus on RTEMS in the next two years, continue to work and complete them.
 ## Conclusion
 I was very lucky. RTEMS was migrated to gitlab in the early stage of GSOC2024. This greatly reduced the difficulty of code merging. All my questions were answered promptly. I learned more about RTEMS and embedded development. Contributed to a very worthy cause and worked with many RTEMS people and great mentors from various parts of the world. I really enjoy working with RTEMS.
 
-I would like to thank my mentors, and the whole RTEMS community for every suggestion, discussion, and comment which helps me to deal with all the difficulties and problems. I would also like to thank Google for providing this opportunity.
+I would like to thank my mentors (Kinsey and Utkarsh), and the whole RTEMS community for every suggestion, discussion, and comment which helps me to deal with all the difficulties and problems. I would also like to thank Google for providing this opportunity.
