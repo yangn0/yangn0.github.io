@@ -81,7 +81,7 @@ Blog Post:
 ### Bugs
 Some bugs I found and fixed.
 
-[5012 - termios: scanf() is not blocking in UART interrupt mode (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5012)
+[5012 - termios: scanf() is not blocking in UART interrupt mode (Closed)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5012)
 
 [29 - Found RTEMS_FATAL_SOURCE_SPURIOUS_INTERRUPT fatal of a72_lp64_qemu BSP related to clock interrupt. ](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/29)
 
