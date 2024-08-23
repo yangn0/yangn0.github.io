@@ -3,11 +3,9 @@ layout: post
 title:  "GSoC 2024 Final Submission: BSP Improvements for RPi4"
 ---
 
-This year RTEMS support gitlab.
+Project Proposal: [https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing](https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing)
 
-Project Proposal: https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing
-
-Project epic: https://gitlab.rtems.org/groups/rtems/-/epics/6
+Project epic: [https://gitlab.rtems.org/groups/rtems/-/epics/6](https://gitlab.rtems.org/groups/rtems/-/epics/6)
 
 
 # Goal
