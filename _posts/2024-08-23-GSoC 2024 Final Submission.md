@@ -56,12 +56,12 @@ issues:
 - [Add SPI support to Raspberry Pi 4B BSP (Closed)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5056)
 
 SSD1306 Driver: 
-- https://github.com/yangn0/RTEMS_app/blob/main/test/test_SSD1306.c
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DFtzoiYVMiQ?si=sG2gWWefTS6fUv-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+- [https://github.com/yangn0/RTEMS_app/blob/main/test/test_SSD1306.c](https://github.com/yangn0/RTEMS_app/blob/main/test/test_SSD1306.c)
 
 Blog Post:
 - [Add SPI support for RTEMS Raspberrypi4 BSP](https://yangn0.github.io/2024/07/24/Add-SPI-support-for-RTEMS-Raspberrypi4-BSP.html)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DFtzoiYVMiQ?si=sG2gWWefTS6fUv-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Timer
 Finished the system timer support and the Wathdog Timer driver.
