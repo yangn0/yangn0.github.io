@@ -31,7 +31,7 @@ The GPIO driver was mainly completed by GSOC 2023 student Utkarsh Verma, but I h
 ### Refactor the PL011 Peripheral Controller Driver
 
 - Refactor the pl011 driver to be extensible.
-- Add IRQ support and baudrate configuration support for pl011 driver.
+- Add IRQ support and baudrate configuration support for pl011 driver. (GSOC 2023 left)
 - Modify related BSP.
 
 This was an unplanned task, but it is very meaningful and will be an improvement that is shared by many arm BSPs.
