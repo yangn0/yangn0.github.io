@@ -27,7 +27,7 @@ issues:
 - [Add gpio driver for aarch64/raspberrypi BSP](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5029)
 
 Repository:
-- https://gitlab.rtems.org/yangn0/rtems/-/tree/gpio?ref_type=heads
+- [https://gitlab.rtems.org/yangn0/rtems/-/tree/gpio?ref_type=heads](https://gitlab.rtems.org/yangn0/rtems/-/tree/gpio?ref_type=heads)
 
 These codes were mainly completed by GSOC2023 student Utkarsh Verma. Due to some reasons they could not be merged. I improved and merged them as a co-author.
 
@@ -49,7 +49,7 @@ issues:
 These codes were mainly completed by GSOC2023 student Utkarsh Verma. Due to some reasons they could not be merged. I improved and merged them as a co-author.
 
 ## SPI Driver
-Finished the SPI driver for Raspberry Pi 4B BSP.
+Finished the SPI driver for Raspberry Pi 4B BSP and SSD1306 driver. I connected a 1306 OLED screen to RPi4 via SPI and output the RTEMS logo.
 
 Merge requests:
 - [aarch64/raspberrypi: Add SPI support (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/103)
@@ -57,11 +57,38 @@ Merge requests:
 issues:
 - [Add SPI support to Raspberry Pi 4B BSP (Closed)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5056)
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/MUQfKFzIOeU" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen>
-</iframe>
+SSD1306 Driver: 
+- https://github.com/yangn0/RTEMS_app/blob/main/test/test_SSD1306.c
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DFtzoiYVMiQ?si=sG2gWWefTS6fUv-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Blog Post:
+- [Add SPI support for RTEMS Raspberrypi4 BSP](https://yangn0.github.io/2024/07/24/Add-SPI-support-for-RTEMS-Raspberrypi4-BSP.html)
+
+## Timer
+Finished the system timer support and the Wathdog Timer driver.
+
+Merge requests:
+- [bsps/aarch64/raspberrypi: Add system timer support (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/commit/00f0d307b49097236dd10329456bb4103c283024)
+- [aarch64/raspberrypi: Add Watchdog Timer driver (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/120)
+
+WDT test:
+- [https://github.com/yangn0/RTEMS_app/blob/main/test/test_WDT.c](https://github.com/yangn0/RTEMS_app/blob/main/test/test_WDT.c)
+
+Blog Post:
+- [RTEMS RPi4B BSP add system timer driver support](https://yangn0.github.io/2024/05/22/RTEMS-RPi4B-BSP-add-system-timer-driver-support.html)
+
+## bug:
+Some bugs I found and fixed.
+
+[termios: scanf() is not blocking in UART interrupt mode (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5012)
+
+[Found RTEMS_FATAL_SOURCE_SPURIOUS_INTERRUPT fatal of a72_lp64_qemu BSP related to clock interrupt. ](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/29)
+
+[bsps/xilinx-versal: fix BSP_INTERRUPT_VECTOR_COUNT too large (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/51)
+
+[dev/pl011: Fix incorrect macro definition (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/64)
+
+# Current State
+
+# Work Left
