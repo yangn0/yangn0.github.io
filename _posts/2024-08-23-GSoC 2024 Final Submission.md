@@ -7,12 +7,12 @@ Project Proposal: [https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I
 
 Project epic: [https://gitlab.rtems.org/groups/rtems/-/epics/6](https://gitlab.rtems.org/groups/rtems/-/epics/6)
 
-# Goal
+## Goal
 This project aims to improve the Raspberry Pi 4B BSP support on RTEMS. Project intends to add the following supports to the Raspberry Pi 4B BSP: SPI support, Watchdog support and SD card support.
 
-# Work Done
+## Work Done
 
-## GPIO Driver
+### GPIO Driver
 
 The gpio driver is necessary for the development of other peripheral drivers. 
 
@@ -28,7 +28,7 @@ Repository:
 
 These codes were mainly completed by GSOC2023 student Utkarsh Verma. Due to some reasons they could not be merged. I improved and merged them as a co-author.
 
-## Refactor the PL011 Peripheral Controller Driver
+### Refactor the PL011 Peripheral Controller Driver
 
 - Refactor the pl011 driver to be extensible.
 - Add IRQ support and baudrate configuration support for pl011 driver.
@@ -45,7 +45,7 @@ issues:
 
 These codes were mainly completed by GSOC2023 student Utkarsh Verma. Due to some reasons they could not be merged. I improved and merged them as a co-author.
 
-## SPI Driver
+### SPI Driver
 Finished the SPI driver for Raspberry Pi 4B BSP and SSD1306 driver. I connected a 1306 OLED screen to RPi4 via SPI and output the RTEMS logo.
 
 Merge requests:
@@ -62,7 +62,7 @@ Blog Post:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DFtzoiYVMiQ?si=sG2gWWefTS6fUv-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Timer
+### Timer
 Finished the system timer support and the Wathdog Timer driver.
 
 Merge requests:
@@ -75,10 +75,10 @@ WDT test:
 Blog Post:
 - [RTEMS RPi4B BSP add system timer driver support](https://yangn0.github.io/2024/05/22/RTEMS-RPi4B-BSP-add-system-timer-driver-support.html)
 
-## FDT support for sdhci
+### FDT support for sdhci
 [FDT support for sdhci (Unmerged)](https://gitlab.rtems.org/yangn0/rtems/-/commit/470d9cb763b4689b519ef069b61717d7a23c7780)
 
-## bug
+### bug
 Some bugs I found and fixed.
 
 [termios: scanf() is not blocking in UART interrupt mode (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/5012)
@@ -89,23 +89,23 @@ Some bugs I found and fixed.
 
 [dev/pl011: Fix incorrect macro definition (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/64)
 
-# Current State
+## Current State
 I completed most of the tasks in the proposal such as SPI support (polling mode and interrupt mode), watchdog support, and some unplanned tasks such as improving and merging gpio and pl011 driver.
 
-# Work Left
-## 1. sdhci driver
+## Work Left
+### 1. sdhci driver
 The sdhci driver in freebsd requires BSP to support DMA, FDT, and mailbox. If I want to port it to libbsd, I need to implement DMA support, FDT support, and mailbox support first. There is a lot of work to support sd card. I only implemented [FDT support for sdhci (Unmerged)](https://gitlab.rtems.org/yangn0/rtems/-/commit/470d9cb763b4689b519ef069b61717d7a23c7780). So the left work is DMA support, mailbox support and SD card support.
 And the FDT support for sdhci may still need improvement.  
 
-## 2. GSOC2023 unmerged code
+### 2. GSOC2023 unmerged code
 There is still some unmerged code from Utkarsh Verma.
 
 I will focus on RTEMS in the next two years, continue to work and complete them.
 
-# Unmerged MR
+## Unmerged MR
 - [dev/serial: Refactor the pl011 driver to be extensible (Open)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/47)
 
-# Conclusion
+## Conclusion
 I was very lucky. RTEMS was migrated to gitlab in the early stage of GSOC2024. This greatly reduced the difficulty of code merging. All my questions were answered promptly. I learned more about RTEMS and embedded development. Contributed to a very worthy cause and worked with many RTEMS people and great mentors from various parts of the world. I really enjoy working with RTEMS.
 
 I would like to thank my mentors, and the whole RTEMS community for every suggestion, discussion, and comment which helps me to deal with all the difficulties and problems. I would also like to thank Google for providing this opportunity.
