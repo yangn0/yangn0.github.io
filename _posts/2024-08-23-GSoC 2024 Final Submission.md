@@ -7,6 +7,8 @@ Project Proposal: [https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I
 
 GitLab Epic Tracking Project: [https://gitlab.rtems.org/groups/rtems/-/epics/6](https://gitlab.rtems.org/groups/rtems/-/epics/6)
 
+GitLab activity: [https://gitlab.rtems.org/users/yangn0/activity](https://gitlab.rtems.org/users/yangn0/activity)
+
 ## Goal
 This project aims to improve the Raspberry Pi 4B BSP support on RTEMS. Project intends to add the following supports to the Raspberry Pi 4B BSP: SPI support, Watchdog support and SD card support.
 
