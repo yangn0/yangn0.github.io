@@ -48,7 +48,7 @@ issues:
 The PL011 driver was mainly completed by GSOC 2023 student Utkarsh Verma, but I had to address issues needed to make it mergeable and fully functional. The work now lists both of us as authors.
 
 ### SPI Driver
-Finished the SPI driver for Raspberry Pi 4B BSP and SSD1306 driver. I connected a 1306 OLED screen to RPi4 via SPI and output the RTEMS logo.
+Completed the SPI driver for Raspberry Pi 4B BSP and SSD1306 driver. I connected a 1306 OLED screen to RPi4 via SPI and output the RTEMS logo.
 
 Merge requests:
 - [103 - aarch64/raspberrypi: Add SPI support (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/merge_requests/103)
@@ -65,7 +65,7 @@ Blog Post:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DFtzoiYVMiQ?si=sG2gWWefTS6fUv-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Timer
-Finished the system timer support and the Wathdog Timer driver.
+Completed the system timer support and the Wathdog Timer driver.
 
 Merge requests:
 - [bsps/aarch64/raspberrypi: Add system timer support (Merged)](https://gitlab.rtems.org/rtems/rtos/rtems/-/commit/00f0d307b49097236dd10329456bb4103c283024)
