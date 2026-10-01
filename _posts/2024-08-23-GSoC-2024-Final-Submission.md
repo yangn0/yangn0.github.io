@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title: "GSoC 2024 Final Submission: BSP Improvements for RPi4"
 tags: [GSoC, RTEMS, RPi4B]
-# 旧文件名（带空格）的链接跳转到这里，保留老链接可用
+# 下面这些旧链接跳转到本页
 redirect_from:
   - "/2024/08/23/GSoC 2024 Final Submission.html"
   - "/2024/08/23/GSoC-2024-Final-Submission.html"

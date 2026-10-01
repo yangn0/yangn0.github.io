@@ -1,10 +1,7 @@
 ---
-layout: post
+layout: single
 title: "RTEMS RPi4B BSP add system timer driver support"
 tags: [RTEMS, RPi4B, BSP]
-# 旧文件名（带空格）的链接跳转到这里，保留老链接可用
-redirect_from:
-  - "/2024/05/22/RTEMS RPi4B BSP add system timer driver support.html"
 ---
 
 # Abstract

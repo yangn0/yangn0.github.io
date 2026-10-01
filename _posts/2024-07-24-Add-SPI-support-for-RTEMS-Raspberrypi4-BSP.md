@@ -1,10 +1,7 @@
 ---
-layout: post
+layout: single
 title: "Add SPI support for RTEMS Raspberrypi4 BSP"
 tags: [RTEMS, RPi4B, SPI, BSP]
-# 旧文件名（带空格）的链接跳转到这里，保留老链接可用
-redirect_from:
-  - "/2024/07/24/Add SPI support for RTEMS Raspberrypi4 BSP.html"
 ---
 
 Mainly refer to `dev/bsps/shared/dev/spi/cadence-spi.c`

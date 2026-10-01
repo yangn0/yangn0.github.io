@@ -37,23 +37,23 @@
 在 GitHub 仓库页面点 **Add file → Create new file**，路径直接写：
 
 ```
-_posts/2026-10-01-my-post.md
+_posts/2026-10-02-my-post.md
 ```
 
 内容格式：
 
 ```markdown
 ---
-layout: post
+layout: single
 title: "My post title"
-date: 2026-10-01 21:30:00 +0800
+date: 2026-10-02 21:30:00 +0800
 tags: [RTEMS, RPi4B]
 ---
 
 正文从这里开始，用 Markdown 写。
 ```
 
-要点：文件开头的 `---` 必须保留，`layout: post` 不能少，`title` 建议用双引号包住。
+要点：文件开头的 `---` 必须保留，`layout: single` 不能少，`title` 建议用双引号包住。
 
 ## 图片
 
@@ -69,15 +69,18 @@ tags: [RTEMS, RPi4B]
 
 | 字段 | 是否必填 | 说明 |
 |---|---|---|
-| `layout` | 必填 | 固定写 `post` |
+| `layout` | 必填 | 固定写 `single` |
 | `title` | 必填 | 文章标题，用双引号包住 |
 | `date` | 可选 | 不写就用文件名里的日期（按 `_config.yml` 里的 `Asia/Shanghai` 时区） |
-| `tags` | 可选 | 形如 `[RTEMS, RPi4B]`，会自动出现在文章顶部和顶部导航的 Tags 页里 |
+| `tags` | 可选 | 形如 `[RTEMS, RPi4B]`，显示在文章顶部，点进去是 `/tags/` 里对应的分组 |
+| `categories` | 可选 | 形如 `[RTEMS]`，用法同 tags，汇总在 `/categories/` |
 | `author` | 可选 | 不写就用站点默认作者 |
+| `header.overlay_image` | 可选 | 文章顶部大图，例如 `/picture/xxx.png` |
+| `excerpt` | 可选 | 首页列表里显示的摘要 |
 
 ## 写完怎么确认
 
-线上地址是 <https://yangn0.github.io/>。push 之后看仓库的 **Actions** 或 commit 右侧的状态点，
+线上地址是 <https://yangn0.github.io/>。push 之后看仓库的 commit 右侧状态点，
 变绿就说明构建成功；如果是红的，点进去看日志，最常见的原因是 front matter 少了 `---`。
 
 ## 发布前先在本地看效果
@@ -89,26 +92,42 @@ tags: [RTEMS, RPi4B]
 会自动带上 `_drafts/` 里的草稿，改文件即时刷新。确认没问题再 `./publish.sh --push`。
 想换端口：`PORT=5000 ./serve.sh`。
 
+## 换主题和配色
+
+主题是 [minimal-mistakes](https://mmistakes.github.io/minimal-mistakes/)，在 `_config.yml` 里：
+
+```yaml
+minimal_mistakes_skin : "default"   # air / aqua / contrast / dark / dirt / neon
+                                    # mint / plum / sunrise / catppuccin_latte / catppuccin_mocha
+```
+
+改完重新构建即可预览。升级主题版本就改 `remote_theme` 后面的 `@4.28.1`。
+
 ## 本地环境
 
 这台机器上已经装好（都在用户目录，不需要 root）：
 
 - Ruby 3.2.3（apt 装的）
-- Jekyll 4.4.1 + jekyll-feed / jekyll-seo-tag / jekyll-sitemap / jekyll-redirect-from
-- minima 2.5.1（和 GitHub Pages 线上用的版本一致）
+- Jekyll 4.4.1
+- 插件：jekyll-feed / jekyll-sitemap / jekyll-redirect-from / jekyll-remote-theme /
+  jekyll-include-cache / jekyll-paginate / jekyll-gist
+
+主题本身由 `remote_theme` 在构建时自动拉取（本地会缓存到 `.jekyll-cache/`），不用单独安装。
 
 换机器时照着重装一遍：
 
 ```bash
-gem install --user-install jekyll jekyll-feed jekyll-seo-tag jekyll-sitemap jekyll-redirect-from
-gem install --user-install minima -v 2.5.1
+gem install --user-install jekyll jekyll-feed jekyll-sitemap jekyll-redirect-from
+gem install --user-install jekyll-remote-theme jekyll-include-cache jekyll-paginate jekyll-gist
 ```
 
 `serve.sh` 会自动把 `~/.local/share/gem/ruby/3.2.0/bin` 加进 PATH，所以不用手动配环境。
 
-改了文章文件名的话，在 front matter 里加一段就能保住老链接：
+## 改了文件名想保住老链接
+
+在 front matter 里加一段，旧地址会自动 301/跳转到新地址：
 
 ```yaml
 redirect_from:
-  - "/2024/07/24/旧文件名.html"
+  - "/2024/07/24/old-file-name.html"
 ```

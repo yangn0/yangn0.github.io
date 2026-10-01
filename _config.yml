@@ -1,37 +1,77 @@
-title: yangn0
-tagline: RTEMS / BSP notes
-description: >-
-  Ning Yang (杨宁) — master's student at Yanshan University, working on RTEMS
-  and board support packages.
-author: Ning Yang
+# ===== 主题 =====
+# GitHub Pages 传统构建不支持 gem 形式的 minimal-mistakes，用 remote_theme 引同一个版本
+remote_theme           : "mmistakes/minimal-mistakes@4.28.1"
+# 配色皮肤，可换: "air" "aqua" "contrast" "dark" "dirt" "neon" "mint" "plum" "sunrise"
+#                "catppuccin_latte" "catppuccin_mocha"
+minimal_mistakes_skin  : "default"
 
-# 站点地址（改域名时记得一起改）
-url: "https://yangn0.github.io"
-baseurl: ""
+# ===== 站点信息 =====
+locale                 : "en-US"
+title                  : "yangn0"
+title_separator        : "-"
+subtitle               : "RTEMS / BSP notes"
+name                   : "Ning Yang"
+description            : "Ning Yang (杨宁) — master's student at Yanshan University, working on RTEMS and board support packages."
+url                    : "https://yangn0.github.io"
+baseurl                : ""
+repository             : "yangn0/yangn0.github.io"
+teaser                 :
+logo                   :
+masthead_title         :
+breadcrumbs            : false
+words_per_minute       : 200
+enable_copy_code_button: true
+copyright              : "Ning Yang"
+copyright_url          : "https://yangn0.github.io"
 
-theme: minima
-lang: en
-timezone: Asia/Shanghai
+comments:
+  provider             : false
 
-# 文章永久链接，和分类解耦：/2024/08/23/文章名/
-permalink: /:year/:month/:day/:title/
+atom_feed:
+  path                 :
 
-# 首页只列标题，不要摘要
-show_excerpts: false
+# 站内搜索（lunr，纯前端，不需要额外服务）
+search                 : true
+search_full_content    : true
+search_provider        : lunr
 
-# 顶部导航（顺序即显示顺序）
-header_pages:
-  - about.md
-  - tags.md
+og_image               :
 
-# 这些插件 GitHub Pages 自带，不需要额外安装
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-redirect-from
+social:
+  type                 : Person
+  name                 : "Ning Yang"
+  links:
+    - "https://github.com/yangn0"
 
-# 仓库里这些文件不发布到站点（注意：写了 exclude 会覆盖 Jekyll 默认值，所以默认项也列全）
+analytics:
+  provider             : false
+
+# ===== 作者（显示在文章页/首页左侧栏）=====
+author:
+  name                 : "Ning Yang"
+  avatar               :
+  bio                  : "Master's student at Yanshan University. I work on RTEMS and board support packages."
+  location             : "China"
+  email                :
+  links:
+    - label            : "GitHub"
+      icon             : "fab fa-fw fa-github"
+      url              : "https://github.com/yangn0"
+
+# ===== 页脚 =====
+footer:
+  links:
+    - label            : "GitHub"
+      icon             : "fab fa-fw fa-github"
+      url              : "https://github.com/yangn0"
+    - label            : "RSS"
+      icon             : "fas fa-fw fa-rss-square"
+      url              : "/feed.xml"
+  since                : "2024"
+
+# ===== 读取 =====
+include:
+  - .htaccess
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -41,6 +81,9 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - .bundle
+  - .jekyll-cache
+  - .sass-cache
   - README.md
   - PUBLISHING.md
   - new-post.sh
@@ -48,12 +91,77 @@ exclude:
   - serve.sh
   - .gitignore
   - .github
+keep_files:
+  - .git
+encoding               : "utf-8"
+markdown_ext           : "markdown,mkdown,mkdn,mkd,md"
 
-# minima 2.x 读取顶层 github_username，3.x 读取 minima.social_links，两个都写以免主题升级后丢失
-github_username: yangn0
+# ===== 转换 =====
+markdown               : kramdown
+highlighter            : rouge
+lsi                    : false
+excerpt_separator      : "\n\n"
+incremental            : false
 
-minima:
-  date_format: "%b %-d, %Y"
-  social_links:
-    - platform: github
-      user_url: "https://github.com/yangn0"
+kramdown:
+  input                : GFM
+  hard_wrap            : false
+  auto_ids             : true
+  footnote_nr          : 1
+  entity_output        : as_char
+  toc_levels           : 1..6
+  smart_quotes         : lsquo,rsquo,ldquo,rdquo
+  enable_coderay       : false
+
+sass:
+  sass_dir             : _sass
+  style                : compressed
+
+# ===== 输出 =====
+# 保持现有文章 URL 不变（minimal-mistakes 默认是 /:categories/:title/）
+permalink              : /:year/:month/:day/:title/
+timezone               : Asia/Shanghai
+
+paginate               : 5
+paginate_path          : /page:num/
+
+# ===== 插件（都用 GitHub Pages 白名单内的）=====
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-remote-theme
+  - jekyll-redirect-from
+
+# ===== 归档页 =====
+category_archive:
+  type                 : liquid
+  path                 : /categories/
+tag_archive:
+  type                 : liquid
+  path                 : /tags/
+
+compress_html:
+  clippings            : all
+  ignore:
+    envs               : development
+
+# ===== 默认值 =====
+defaults:
+  - scope:
+      path             : ""
+      type             : posts
+    values:
+      layout           : single
+      author_profile   : true
+      read_time        : true
+      comments         : false
+      share            : true
+      related          : true
+  - scope:
+      path             : ""
+      type             : pages
+    values:
+      layout           : single

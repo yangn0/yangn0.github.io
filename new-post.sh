@@ -64,7 +64,7 @@ title_escaped="${title//\"/\\\"}"
 
 {
   echo '---'
-  echo 'layout: post'
+  echo 'layout: single'
   printf 'title: "%s"\n' "$title_escaped"
   if [[ "$draft" -eq 0 ]]; then
     printf 'date: %s %s %s\n' "$today" "$(date +%H:%M:%S)" "$(date +%z)"
