@@ -29,6 +29,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 # 仓库里这些文件不发布到站点（注意：写了 exclude 会覆盖 Jekyll 默认值，所以默认项也列全）
 exclude:

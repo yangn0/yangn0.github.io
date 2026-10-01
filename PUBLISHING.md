@@ -94,14 +94,21 @@ tags: [RTEMS, RPi4B]
 这台机器上已经装好（都在用户目录，不需要 root）：
 
 - Ruby 3.2.3（apt 装的）
-- Jekyll 4.4.1 + jekyll-feed / jekyll-seo-tag / jekyll-sitemap
+- Jekyll 4.4.1 + jekyll-feed / jekyll-seo-tag / jekyll-sitemap / jekyll-redirect-from
 - minima 2.5.1（和 GitHub Pages 线上用的版本一致）
 
 换机器时照着重装一遍：
 
 ```bash
-gem install --user-install jekyll jekyll-feed jekyll-seo-tag jekyll-sitemap
+gem install --user-install jekyll jekyll-feed jekyll-seo-tag jekyll-sitemap jekyll-redirect-from
 gem install --user-install minima -v 2.5.1
 ```
 
 `serve.sh` 会自动把 `~/.local/share/gem/ruby/3.2.0/bin` 加进 PATH，所以不用手动配环境。
+
+改了文章文件名的话，在 front matter 里加一段就能保住老链接：
+
+```yaml
+redirect_from:
+  - "/2024/07/24/旧文件名.html"
+```
