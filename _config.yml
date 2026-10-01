@@ -7,11 +7,11 @@ minimal_mistakes_skin  : "default"
 
 # ===== 站点信息 =====
 locale                 : "en-US"
-title                  : "yangn0"
+title                  : "Ning Yang"
 title_separator        : "-"
-subtitle               : "RTEMS / BSP notes"
+subtitle               : "RTEMS · BSP · Embedded Systems"
 name                   : "Ning Yang"
-description            : "Ning Yang (杨宁) — master's student at Yanshan University, working on RTEMS and board support packages."
+description            :
 url                    : "https://yangn0.github.io"
 baseurl                : ""
 repository             : "yangn0/yangn0.github.io"
