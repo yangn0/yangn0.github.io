@@ -1,12 +1,13 @@
 ---
 layout: post
-title:  "Add SPI support for RTEMS Raspberrypi4 BSP"
+title: "Add SPI support for RTEMS Raspberrypi4 BSP"
+tags: [RTEMS, RPi4B, SPI, BSP]
 ---
 
 Mainly refer to `dev/bsps/shared/dev/spi/cadence-spi.c`
 
 RTEMS uses a linux-based framework. The SPI Bus has been implemented in the RTEMS kernel. In this project, I need to implement the SPI master controller driver of RPi 4 and SSD1306 driver. The implementation of SPI in RTEMS as shown in the block diagram:
-![SPI-RTEMS](https://github.com/yangn0/yangn0.github.io/blob/main/picture/SPI-RTEMS.png?raw=true)
+![SPI block diagram](/picture/SPI-RTEMS.png)
 
 First, register the SPI host controller device on the bus. The register function is as follows:
 ```c

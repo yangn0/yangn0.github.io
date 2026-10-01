@@ -1,0 +1,10 @@
+---
+layout: home
+list_title: "Posts"
+---
+
+Hi, I'm Ning Yang (杨宁). I'm a master's student at Yanshan University in China,
+majoring in Computer Technology. My research mainly focuses on [RTEMS](https://www.rtems.org/).
+
+This is my English blog — notes on RTEMS, board support packages and Raspberry Pi 4B.
+See [About](/about/) if you want the longer version.

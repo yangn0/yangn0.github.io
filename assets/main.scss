@@ -1,0 +1,50 @@
+---
+---
+@import "minima";
+
+/* Tags shown under a post title */
+.post-tags {
+  margin: 0.4rem 0 0;
+}
+
+.tag-pill {
+  display: inline-block;
+  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  background: #fafafa;
+  color: #555;
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.tag-pill:hover {
+  background: #f0f0f0;
+  color: #111;
+  text-decoration: none;
+}
+
+/* Tags page */
+.tag-index .tag-group {
+  margin-bottom: 1.8rem;
+}
+
+.tag-index h2 {
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+}
+
+.tag-index .post-date {
+  margin-left: 0.4rem;
+  color: #828282;
+  font-size: 0.78rem;
+}
+
+/* Link back to the post list at the bottom of an article */
+.post-nav {
+  margin-top: 2.5rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #e8e8e8;
+  font-size: 0.9rem;
+}

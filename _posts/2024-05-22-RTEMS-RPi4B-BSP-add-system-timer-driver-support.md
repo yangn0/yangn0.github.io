@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "RTEMS RPi4B BSP add system timer driver support"
+title: "RTEMS RPi4B BSP add system timer driver support"
+tags: [RTEMS, RPi4B, BSP]
 ---
 
 # Abstract

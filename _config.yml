@@ -1,4 +1,58 @@
 title: yangn0
-description: Ning Yang
+tagline: RTEMS / BSP notes
+description: >-
+  Ning Yang (杨宁) — master's student at Yanshan University, working on RTEMS
+  and board support packages.
+author: Ning Yang
+
+# 站点地址（改域名时记得一起改）
+url: "https://yangn0.github.io"
+baseurl: ""
+
 theme: minima
+lang: en
+timezone: Asia/Shanghai
+
+# 文章永久链接，和分类解耦：/2024/08/23/文章名/
+permalink: /:year/:month/:day/:title/
+
+# 首页只列标题，不要摘要
 show_excerpts: false
+
+# 顶部导航（顺序即显示顺序）
+header_pages:
+  - about.md
+  - tags.md
+
+# 这些插件 GitHub Pages 自带，不需要额外安装
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# 仓库里这些文件不发布到站点（注意：写了 exclude 会覆盖 Jekyll 默认值，所以默认项也列全）
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - PUBLISHING.md
+  - new-post.sh
+  - publish.sh
+  - serve.sh
+  - .gitignore
+  - .github
+
+# minima 2.x 读取顶层 github_username，3.x 读取 minima.social_links，两个都写以免主题升级后丢失
+github_username: yangn0
+
+minima:
+  date_format: "%b %-d, %Y"
+  social_links:
+    - platform: github
+      user_url: "https://github.com/yangn0"

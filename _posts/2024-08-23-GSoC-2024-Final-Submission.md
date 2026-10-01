@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "GSoC 2024 Final Submission: BSP Improvements for RPi4"
+title: "GSoC 2024 Final Submission: BSP Improvements for RPi4"
+tags: [GSoC, RTEMS, RPi4B]
 ---
 
 Project Proposal: [https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing](https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing)
