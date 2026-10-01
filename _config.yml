@@ -49,8 +49,8 @@ analytics:
 # ===== 作者（显示在文章页/首页左侧栏）=====
 author:
   name                 : "Ning Yang"
-  avatar               :
-  bio                  : "Master's student at Yanshan University. I work on RTEMS and board support packages."
+  avatar               : "/picture/avatar.jpg"
+  bio                  :
   location             : "China"
   email                :
   links:
