@@ -7,9 +7,9 @@ minimal_mistakes_skin  : "default"
 
 # ===== 站点信息 =====
 locale                 : "en-US"
-title                  : "Ning Yang"
+title                  : "Ning Yang's Blog"
 title_separator        : "-"
-subtitle               : "RTEMS · BSP · Embedded Systems"
+subtitle               : 
 name                   : "Ning Yang"
 description            :
 url                    : "https://yangn0.github.io"
