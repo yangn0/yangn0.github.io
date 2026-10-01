@@ -19,7 +19,10 @@ fi
 site_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$site_root"
 
+# 输出到自己的目录，避免和别的东西（比如以 root 跑过的构建）抢 _site
+dest="$site_root/.site-preview"
+
 host_ip="$(hostname -I 2>/dev/null | awk '{print $1}')"
 echo "本地预览: http://127.0.0.1:${PORT:-4000}/   (局域网: http://${host_ip:-本机IP}:${PORT:-4000}/)"
 
-exec jekyll serve --host 0.0.0.0 --port "${PORT:-4000}" --drafts --livereload "$@"
+exec jekyll serve --host 0.0.0.0 --port "${PORT:-4000}" --destination "$dest" --drafts --livereload "$@"
