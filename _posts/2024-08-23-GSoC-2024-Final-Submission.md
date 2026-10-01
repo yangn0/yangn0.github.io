@@ -5,6 +5,7 @@ tags: [GSoC, RTEMS, RPi4B]
 # 旧文件名（带空格）的链接跳转到这里，保留老链接可用
 redirect_from:
   - "/2024/08/23/GSoC 2024 Final Submission.html"
+  - "/2024/08/23/GSoC-2024-Final-Submission.html"
 ---
 
 Project Proposal: [https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing](https://docs.google.com/document/d/1NjlUSWhqwUvrsQPBISU05ah0I0IGkEuq6BIThrkMBsg/edit?usp=sharing)
